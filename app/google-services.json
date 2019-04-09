@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "136525753770",
+    "firebase_url": "https://flatm8s-d6275.firebaseio.com",
+    "project_id": "flatm8s-d6275",
+    "storage_bucket": "flatm8s-d6275.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136525753770:android:80b68a878ca8d8d2",
+        "android_client_info": {
+          "package_name": "com.example.flatm8s"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136525753770-sopsrv3fa1hq42dm74suogi779cbbicp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKWCgrskFcNiQ4Rn4rcPqjPjcxK2htypo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136525753770-sopsrv3fa1hq42dm74suogi779cbbicp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
