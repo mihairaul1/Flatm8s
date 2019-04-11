@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,13 +16,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText userName, userEmail, userPassword;
+    private EditText userName, userEmail, userPassword, userAge, userUniversity;
     private Button regButton;
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
+    private ImageView userProfilePic;
+    String name, email, age, password, university;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,18 +75,23 @@ public class RegistrationActivity extends AppCompatActivity {
         userPassword = findViewById(R.id.etUserPassword);
         regButton = findViewById(R.id.btnRegister);
         userLogin = findViewById(R.id.tvUserLogin);
+        userAge = findViewById(R.id.etAge);
+        userUniversity = findViewById(R.id.etUniversity);
+        userProfilePic = findViewById(R.id.ivProfile);
     }
 
     private Boolean validate(){
         Boolean result = false;
 
         // Creating variables containing the registered details
-        String name = userName.getText().toString();
-        String password = userPassword.getText().toString();
-        String email = userEmail.getText().toString();
+        name = userName.getText().toString();
+        password = userPassword.getText().toString();
+        email = userEmail.getText().toString();
+        age = userAge.getText().toString();
+        university = userUniversity.getText().toString();
 
         // Checking if all the fields have been filled in
-        if (name.isEmpty() || password.isEmpty() || email.isEmpty()){
+        if (name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty() || university.isEmpty()){
             // If empty, display error message
             Toast.makeText(this, "Please enter all the details!", Toast.LENGTH_LONG).show();
         }else{
@@ -98,6 +108,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
+                        sendUserInfo();
                         Toast.makeText(RegistrationActivity.this, "Successfully registered! Verification mail sent.", Toast.LENGTH_LONG).show();
                         firebaseAuth.signOut();
                         finish();
@@ -109,5 +120,16 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    /* Function that send the data from the registration form to
+       the database */
+
+    private void sendUserInfo(){
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
+        UserProfile userProfile = new UserProfile(name, email, age, university);
+
+        myRef.setValue(userProfile);
     }
 }
