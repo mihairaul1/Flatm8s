@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="#ffffff">
 
     <EditText
+        android:background="@drawable/edittext_style"
         android:id="@+id/etUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +28,7 @@
         app:layout_constraintVertical_bias="0.288" />
 
     <EditText
+        android:background="@drawable/edittext_style"
         android:id="@+id/etUserPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +48,8 @@
         app:layout_constraintVertical_bias="0.07" />
 
     <Button
+        android:textColor="#ffffff"
+        android:background="@drawable/btn_style"
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

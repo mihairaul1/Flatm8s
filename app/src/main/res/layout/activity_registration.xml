@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    tools:context=".RegistrationActivity"
+    android:background="#ffffff">
 
     <EditText
+        android:background="@drawable/edittext_style"
         android:id="@+id/etUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +29,7 @@
         app:layout_constraintVertical_bias="0.329" />
 
     <EditText
+        android:background="@drawable/edittext_style"
         android:id="@+id/etUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,6 +50,7 @@
         app:layout_constraintVertical_bias="0.015" />
 
     <EditText
+        android:background="@drawable/edittext_style"
         android:id="@+id/etUserPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,6 +71,8 @@
         app:layout_constraintVertical_bias="0.019" />
 
     <Button
+        android:textColor="#ffffff"
+        android:background="@drawable/btn_style"
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,6 +109,7 @@
         app:layout_constraintVertical_bias="0.238" />
 
     <EditText
+        android:background="@drawable/edittext_style"
         android:id="@+id/etAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,6 +130,7 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <EditText
+        android:background="@drawable/edittext_style"
         android:id="@+id/etUniversity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
