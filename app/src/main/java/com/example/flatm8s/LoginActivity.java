@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     // Declaring all the variables that are needed
-    private EditText Name;
+    private EditText Email;
     private EditText Password;
     private TextView Info, forgotPassword;
     private Button Login;
@@ -35,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // Assigning id's to all the variables
-        Name = findViewById(R.id.etUserEmail);
+        Email = findViewById(R.id.etUserEmail);
         Password = findViewById(R.id.etUserPassword);
         Info = findViewById(R.id.tvInfo);
         Login = findViewById(R.id.btnLogin);
@@ -60,7 +61,16 @@ public class LoginActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate(Name.getText().toString(), Password.getText().toString());
+                //validate(Email.getText().toString(), Password.getText().toString());
+
+                String login_email = Email.getText().toString();
+                String login_password = Password.getText().toString();
+
+                if(TextUtils.isEmpty(login_email) || TextUtils.isEmpty(login_password)){
+                    Toast.makeText(LoginActivity.this, "Please fill in all the details!", Toast.LENGTH_SHORT).show();
+                }else{
+                    validate(Email.getText().toString(), Password.getText().toString());
+                }
             }
         });
 
