@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // validate will try and login the user
-    private void validate(String userName, String userPassword){
+    private void validate(String userName, final String userPassword){
 
         progressDialog.setMessage("Verification in progress.");
         progressDialog.show();
