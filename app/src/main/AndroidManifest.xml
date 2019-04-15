@@ -21,7 +21,6 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

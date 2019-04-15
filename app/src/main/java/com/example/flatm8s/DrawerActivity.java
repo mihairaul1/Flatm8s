@@ -126,6 +126,7 @@ public class DrawerActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
             startActivity(new Intent(DrawerActivity.this, ProfileActivity.class));
+            getSupportActionBar().setTitle("Flatm8s");
         } else if (id == R.id.nav_signout) {
             Logout();
         }
