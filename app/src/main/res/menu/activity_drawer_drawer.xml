@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/ic_nav_chat"
+            android:title="Chat" />
+        <item
+            android:id="@+id/nav_tasks"
+            android:icon="@drawable/ic_nav_tasks"
+            android:title="Tasks" />
+        <item
+            android:id="@+id/nav_expenses"
+            android:icon="@drawable/ic_nav_expenses"
+            android:title="Expenses" />
+    </group>
+
+    <item android:title="Report Faults">
+        <menu>
+            <item
+                android:id="@+id/nav_maintenance"
+                android:icon="@drawable/ic_nav_maintenance"
+                android:title="Maintenance Enquiry" />
+        </menu>
+    </item>
+
+    <item android:title="Account management">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_nav_profile"
+                android:title="Profile" />
+
+            <item
+                android:id="@+id/nav_signout"
+                android:icon="@drawable/ic_nav_signout"
+                android:title="Sign Out" />
+        </menu>
+    </item>
+
+</menu>

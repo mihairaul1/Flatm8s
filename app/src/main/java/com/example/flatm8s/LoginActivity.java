@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
            to log in again */
         if (user != null){
             finish();
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            startActivity(new Intent(LoginActivity.this, DrawerActivity.class));
         }
 
         Login.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(emailflag){
             finish();
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            startActivity(new Intent(LoginActivity.this, DrawerActivity.class));
         }else{
             Toast.makeText(this, "Verify your email!", Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
