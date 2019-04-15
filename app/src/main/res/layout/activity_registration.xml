@@ -71,8 +71,6 @@
         app:layout_constraintVertical_bias="0.019" />
 
     <Button
-        android:textColor="#ffffff"
-        android:background="@drawable/btn_style"
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,13 +80,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_style"
         android:text="Register"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUserPassword"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintVertical_bias="0.764" />
 
     <TextView
         android:id="@+id/tvUserLogin"
@@ -109,8 +109,7 @@
         app:layout_constraintVertical_bias="0.238" />
 
     <EditText
-        android:background="@drawable/edittext_style"
-        android:id="@+id/etAge"
+        android:id="@+id/etUserAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -119,18 +118,18 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/edittext_style"
         android:ems="10"
         android:hint="Age"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUserPassword"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toBottomOf="@+id/etUserDOB"
+        app:layout_constraintVertical_bias="0.056" />
 
     <EditText
-        android:background="@drawable/edittext_style"
         android:id="@+id/etUniversity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -140,17 +139,18 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/edittext_style"
         android:ems="10"
         android:hint="University"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAge"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintTop_toBottomOf="@+id/etUserAge"
+        app:layout_constraintVertical_bias="0.259" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivProfile"
         android:layout_width="110dp"
         android:layout_height="110dp"
@@ -167,4 +167,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.592"
         app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <EditText
+        android:id="@+id/etUserDOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/edittext_style"
+        android:ems="10"
+        android:hint="Date Of Birth"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUserPassword" />
+
 </android.support.constraint.ConstraintLayout>

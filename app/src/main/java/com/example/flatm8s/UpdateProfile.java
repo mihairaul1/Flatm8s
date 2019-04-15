@@ -1,5 +1,6 @@
 package com.example.flatm8s;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -29,10 +31,13 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class UpdateProfile extends AppCompatActivity {
 
-    private EditText updateUserName, updateUserEmail, updateUserAge, updateUserUniversity;
+    private EditText updateUserName, updateUserEmail, updateUserDOB, updateUserAge, updateUserUniversity;
     private Button save;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -69,6 +74,7 @@ public class UpdateProfile extends AppCompatActivity {
         updateUserName = findViewById(R.id.etNameUpdate);
         updateUserEmail = findViewById(R.id.etEmailUpdate);
         updateUserAge = findViewById(R.id.etAgeUpdate);
+        updateUserDOB = findViewById(R.id.etDOBUpdate);
         updateUserUniversity = findViewById(R.id.etUniversityUpdate);
         save = findViewById(R.id.btnSaveUpdate);
         updateProfilePicture = findViewById(R.id.ivProfileUpdate);
@@ -79,6 +85,20 @@ public class UpdateProfile extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
 
+        updateUserDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar calendar = Calendar.getInstance();
+                int cYear = calendar.get(Calendar.YEAR);
+                int cMonth = calendar.get(Calendar.MONTH);
+                int cDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(view.getContext(), datePickerListener, cYear, cMonth, cDay);
+                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+                datePickerDialog.show();
+            }
+        });
+
         final DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -88,6 +108,7 @@ public class UpdateProfile extends AppCompatActivity {
                 updateUserName.setText(userProfile.getUserName());
                 updateUserEmail.setText(userProfile.getUserEmail());
                 updateUserAge.setText(userProfile.getUserAge());
+                updateUserDOB.setText(userProfile.getUserDOB());
                 updateUserUniversity.setText(userProfile.getUserUniversity());
             }
 
@@ -112,9 +133,10 @@ public class UpdateProfile extends AppCompatActivity {
                 String name = updateUserName.getText().toString();
                 String email = updateUserEmail.getText().toString();
                 String age = updateUserAge.getText().toString();
+                String dob = updateUserDOB.getText().toString();
                 String university = updateUserUniversity.getText().toString();
 
-                UserProfile userProfile = new UserProfile(name, email, age, university);
+                UserProfile userProfile = new UserProfile(name, email, dob, age, university);
 
                 databaseReference.setValue(userProfile);
 
@@ -145,6 +167,41 @@ public class UpdateProfile extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Select image!"), PICK_IMAGE);
             }
         });
+    }
+
+    DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+
+            String format = new SimpleDateFormat("dd MM YYYY").format(calendar.getTime());
+            updateUserDOB.setText(format);
+            updateUserAge.setText(Integer.toString(calculateAge(calendar.getTimeInMillis())));
+        }
+    };
+
+    int calculateAge(long date){
+        // Extracting the user input
+        Calendar dob = Calendar.getInstance();
+        dob.setTimeInMillis(date);
+
+        // Getting today's date
+        Calendar today = Calendar.getInstance();
+
+        // Calculate age by substracting dob's year from the
+        // current year
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        // Comparing the current day with the day from the dob
+        // if date of birth day is greater than today's date age--
+        if(today.get(Calendar.DAY_OF_MONTH) < dob.get(Calendar.DAY_OF_MONTH)){
+            age --;
+        }
+
+        return age;
     }
 
     @Override

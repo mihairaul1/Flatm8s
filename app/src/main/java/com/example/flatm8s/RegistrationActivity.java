@@ -1,5 +1,6 @@
 package com.example.flatm8s;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,15 +31,18 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText userName, userEmail, userPassword, userAge, userUniversity;
+    private EditText userName, userEmail, userPassword, userAge, userUniversity, userDOB;
     private Button regButton;
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
     private ImageView userProfilePic;
-    String name, email, age, password, university;
+    String name, email, age, password, university, dob;
     private FirebaseStorage firebaseStorage;
     private static int PICK_IMAGE = 123;
     Uri imagePath;
@@ -79,7 +84,19 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+        userDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar calendar = Calendar.getInstance();
+                int cYear = calendar.get(Calendar.YEAR);
+                int cMonth = calendar.get(Calendar.MONTH);
+                int cDay = calendar.get(Calendar.DAY_OF_MONTH);
 
+                DatePickerDialog datePickerDialog = new DatePickerDialog(view.getContext(), datePickerListener, cYear, cMonth, cDay);
+                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+                datePickerDialog.show();
+            }
+        });
 
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,15 +130,52 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
+    DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+
+            String format = new SimpleDateFormat("dd MM YYYY").format(calendar.getTime());
+            userDOB.setText(format);
+            userAge.setText(Integer.toString(calculateAge(calendar.getTimeInMillis())));
+        }
+    };
+
+    int calculateAge(long date){
+        // Extracting the user input
+        Calendar dob = Calendar.getInstance();
+        dob.setTimeInMillis(date);
+
+        // Getting today's date
+        Calendar today = Calendar.getInstance();
+
+        // Calculate age by substracting dob's year from the
+        // current year
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        // Comparing the current day with the day from the dob
+        // if date of birth day is greater than today's date age--
+        if(today.get(Calendar.DAY_OF_MONTH) < dob.get(Calendar.DAY_OF_MONTH)){
+            age --;
+        }
+
+        return age;
+    }
+
+
     private void setupUIViews(){
         userName = findViewById(R.id.etUserName);
         userEmail = findViewById(R.id.etUserEmail);
         userPassword = findViewById(R.id.etUserPassword);
         regButton = findViewById(R.id.btnRegister);
         userLogin = findViewById(R.id.tvUserLogin);
-        userAge = findViewById(R.id.etAge);
+        userAge = findViewById(R.id.etUserAge);
         userUniversity = findViewById(R.id.etUniversity);
         userProfilePic = findViewById(R.id.ivProfile);
+        userDOB = findViewById(R.id.etUserDOB);
     }
 
     private Boolean validate(){
@@ -133,9 +187,10 @@ public class RegistrationActivity extends AppCompatActivity {
         email = userEmail.getText().toString();
         age = userAge.getText().toString();
         university = userUniversity.getText().toString();
+        dob = userDOB.getText().toString();
 
         // Checking if all the fields have been filled in
-        if (name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty() || university.isEmpty() || imagePath == null){
+        if (name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty() || university.isEmpty() || imagePath == null || dob.isEmpty()){
             // If empty, display error message
             Toast.makeText(this, "Please enter all the details!", Toast.LENGTH_LONG).show();
         }else{
@@ -186,7 +241,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 Toast.makeText(RegistrationActivity.this, "Upload successfull!", Toast.LENGTH_SHORT).show();
             }
         });
-        UserProfile userProfile = new UserProfile(name, email, age, university);
+        UserProfile userProfile = new UserProfile(name, email, dob, age, university);
 
         myRef.setValue(userProfile);
     }

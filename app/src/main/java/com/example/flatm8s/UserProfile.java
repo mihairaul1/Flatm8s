@@ -3,17 +3,21 @@ package com.example.flatm8s;
 public class UserProfile {
     public String userName;
     public String userEmail;
+    public String userDOB;
     public String userAge;
     public String userUniversity;
+    public String userCourse;
+    public String userYear;
 
     public UserProfile(){
 
     }
 
-    public UserProfile(String userName, String userEmail, String userAge, String userUniversity) {
+    public UserProfile(String userName, String userEmail,String userDOB, String userAge, String userUniversity) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userAge = userAge;
+        this.userDOB = userDOB;
         this.userUniversity = userUniversity;
     }
 
@@ -37,6 +41,14 @@ public class UserProfile {
         this.userEmail = userEmail;
     }
 
+    public String getUserDOB() {
+        return userDOB;
+    }
+
+    public void setUserDOB(String userDOB) {
+        this.userDOB = userDOB;
+    }
+
     public String getUserAge() {
         return userAge;
     }
@@ -48,6 +60,7 @@ public class UserProfile {
     public String getUserUniversity() {
         return userUniversity;
     }
+
 
     public void setUserUniversity(String userUniversity) {
         this.userUniversity = userUniversity;
