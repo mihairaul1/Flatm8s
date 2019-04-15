@@ -37,7 +37,8 @@ import java.util.Date;
 
 public class UpdateProfile extends AppCompatActivity {
 
-    private EditText updateUserName, updateUserEmail, updateUserDOB, updateUserAge, updateUserUniversity;
+    private EditText updateUserName, updateUserEmail, updateUserDOB, updateUserAge,
+            updateUserUniversity, updateUserCourse, updateUserYear;
     private Button save;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -76,6 +77,8 @@ public class UpdateProfile extends AppCompatActivity {
         updateUserAge = findViewById(R.id.etAgeUpdate);
         updateUserDOB = findViewById(R.id.etDOBUpdate);
         updateUserUniversity = findViewById(R.id.etUniversityUpdate);
+        updateUserCourse = findViewById(R.id.etCourseUpdate);
+        updateUserYear = findViewById(R.id.etYearUpdate);
         save = findViewById(R.id.btnSaveUpdate);
         updateProfilePicture = findViewById(R.id.ivProfileUpdate);
 
@@ -110,6 +113,8 @@ public class UpdateProfile extends AppCompatActivity {
                 updateUserAge.setText(userProfile.getUserAge());
                 updateUserDOB.setText(userProfile.getUserDOB());
                 updateUserUniversity.setText(userProfile.getUserUniversity());
+                updateUserCourse.setText(userProfile.getUserCourse());
+                updateUserYear.setText(userProfile.getUserYear());
             }
 
             @Override
@@ -135,8 +140,10 @@ public class UpdateProfile extends AppCompatActivity {
                 String age = updateUserAge.getText().toString();
                 String dob = updateUserDOB.getText().toString();
                 String university = updateUserUniversity.getText().toString();
+                String course = updateUserCourse.getText().toString();
+                String year = updateUserYear.getText().toString();
 
-                UserProfile userProfile = new UserProfile(name, email, dob, age, university);
+                UserProfile userProfile = new UserProfile(name, email, dob, age, university, course, year);
 
                 databaseReference.setValue(userProfile);
 

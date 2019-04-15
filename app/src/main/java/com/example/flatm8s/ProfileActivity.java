@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
 public class ProfileActivity extends AppCompatActivity {
 
     private ImageView profilePic;
-    private TextView profileName, profileDOB, profileAge, profileEmail, profileUniversity;
+    private TextView profileName, profileDOB, profileAge, profileEmail, profileUniversity, profileCourse, profileYear;
     private Button profileUpdate, changePassword;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -43,6 +43,8 @@ public class ProfileActivity extends AppCompatActivity {
         profileAge = findViewById(R.id.tvProfileAge);
         profileDOB = findViewById(R.id.tvProfileDOB);
         profileUniversity = findViewById(R.id.tvProfileUniversity);
+        profileCourse = findViewById(R.id.tvProfileCourse);
+        profileYear = findViewById(R.id.tvProfileYear);
         profileUpdate = findViewById(R.id.btnProfileUpdate);
         changePassword = findViewById(R.id.btnChangePassword);
 
@@ -73,6 +75,8 @@ public class ProfileActivity extends AppCompatActivity {
                 profileAge.setText("Age: " + userProfile.getUserAge());
                 profileDOB.setText("Date of Birth: " + userProfile.getUserDOB());
                 profileUniversity.setText("University: " + userProfile.getUserUniversity());
+                profileCourse.setText("Course: "+ userProfile.getUserCourse());
+                profileYear.setText("Year of study: "+userProfile.getUserYear());
             }
 
             @Override

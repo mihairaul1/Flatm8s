@@ -37,12 +37,12 @@ import java.util.Date;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText userName, userEmail, userPassword, userAge, userUniversity, userDOB;
+    private EditText userName, userEmail, userPassword,userDOB, userAge, userUniversity, userCourse, userYear;
     private Button regButton;
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
     private ImageView userProfilePic;
-    String name, email, age, password, university, dob;
+    String name, email, dob, age, password, university, course, year;
     private FirebaseStorage firebaseStorage;
     private static int PICK_IMAGE = 123;
     Uri imagePath;
@@ -172,10 +172,12 @@ public class RegistrationActivity extends AppCompatActivity {
         userPassword = findViewById(R.id.etUserPassword);
         regButton = findViewById(R.id.btnRegister);
         userLogin = findViewById(R.id.tvUserLogin);
-        userAge = findViewById(R.id.etUserAge);
-        userUniversity = findViewById(R.id.etUniversity);
-        userProfilePic = findViewById(R.id.ivProfile);
         userDOB = findViewById(R.id.etUserDOB);
+        userAge = findViewById(R.id.etUserAge);
+        userUniversity = findViewById(R.id.etUserUniversity);
+        userProfilePic = findViewById(R.id.ivProfile);
+        userCourse = findViewById(R.id.etUserCourse);
+        userYear = findViewById(R.id.etUserYear);
     }
 
     private Boolean validate(){
@@ -185,12 +187,15 @@ public class RegistrationActivity extends AppCompatActivity {
         name = userName.getText().toString();
         password = userPassword.getText().toString();
         email = userEmail.getText().toString();
+        dob = userDOB.getText().toString();
         age = userAge.getText().toString();
         university = userUniversity.getText().toString();
-        dob = userDOB.getText().toString();
+        course = userCourse.getText().toString();
+        year = userCourse.getText().toString();
 
         // Checking if all the fields have been filled in
-        if (name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty() || university.isEmpty() || imagePath == null || dob.isEmpty()){
+        if (name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty() || university.isEmpty() ||
+                imagePath == null || dob.isEmpty() || course.isEmpty() || year.isEmpty()){
             // If empty, display error message
             Toast.makeText(this, "Please enter all the details!", Toast.LENGTH_LONG).show();
         }else{
@@ -241,7 +246,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 Toast.makeText(RegistrationActivity.this, "Upload successfull!", Toast.LENGTH_SHORT).show();
             }
         });
-        UserProfile userProfile = new UserProfile(name, email, dob, age, university);
+        UserProfile userProfile = new UserProfile(name, email, dob, age, university, course, year);
 
         myRef.setValue(userProfile);
     }

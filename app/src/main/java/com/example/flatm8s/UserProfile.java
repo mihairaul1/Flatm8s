@@ -13,12 +13,15 @@ public class UserProfile {
 
     }
 
-    public UserProfile(String userName, String userEmail,String userDOB, String userAge, String userUniversity) {
+    public UserProfile(String userName, String userEmail,String userDOB, String userAge,
+                       String userUniversity, String userCourse, String userYear) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userAge = userAge;
         this.userDOB = userDOB;
         this.userUniversity = userUniversity;
+        this.userCourse = userCourse;
+        this. userYear = userYear;
     }
 
     /*Getters and setters used in order to retrieve and respectively
@@ -61,8 +64,23 @@ public class UserProfile {
         return userUniversity;
     }
 
-
     public void setUserUniversity(String userUniversity) {
         this.userUniversity = userUniversity;
+    }
+
+    public String getUserCourse() {
+        return userCourse;
+    }
+
+    public void setUserCourse(String userCourse) {
+        this.userCourse = userCourse;
+    }
+
+    public String getUserYear() {
+        return userYear;
+    }
+
+    public void setUserYear(String userYear) {
+        this.userYear = userYear;
     }
 }
