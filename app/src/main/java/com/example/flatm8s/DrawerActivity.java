@@ -47,6 +47,8 @@ public class DrawerActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setTitle("Home");
+
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
@@ -119,14 +121,13 @@ public class DrawerActivity extends AppCompatActivity
         if (id == R.id.nav_chat) {
             //code
         } else if (id == R.id.nav_tasks) {
-
+            startActivity(new Intent(DrawerActivity.this, Tasks.class));
         } else if (id == R.id.nav_expenses) {
 
         } else if (id == R.id.nav_maintenance) {
-
+            startActivity(new Intent(DrawerActivity.this, MaintenanceEnquiry.class));
         } else if (id == R.id.nav_profile) {
             startActivity(new Intent(DrawerActivity.this, ProfileActivity.class));
-            getSupportActionBar().setTitle("Flatm8s");
         } else if (id == R.id.nav_signout) {
             Logout();
         }
