@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -121,7 +120,7 @@ public class DrawerActivity extends AppCompatActivity
         if (id == R.id.nav_chat) {
             //code
         } else if (id == R.id.nav_tasks) {
-            startActivity(new Intent(DrawerActivity.this, Tasks.class));
+            startActivity(new Intent(DrawerActivity.this, TasksActivity.class));
         } else if (id == R.id.nav_expenses) {
 
         } else if (id == R.id.nav_maintenance) {
