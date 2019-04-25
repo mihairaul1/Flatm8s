@@ -121,8 +121,8 @@ public class DrawerActivity extends AppCompatActivity
             //code
         } else if (id == R.id.nav_tasks) {
             startActivity(new Intent(DrawerActivity.this, TasksActivity.class));
-        } else if (id == R.id.nav_expenses) {
-
+        } else if (id == R.id.nav_consumables) {
+            startActivity(new Intent(DrawerActivity.this, ConsumablesActivity.class));
         } else if (id == R.id.nav_maintenance) {
             startActivity(new Intent(DrawerActivity.this, MaintenanceEnquiry.class));
         } else if (id == R.id.nav_profile) {
