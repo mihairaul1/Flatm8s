@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -42,6 +43,9 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_chat);
+
+        getSupportActionBar().setTitle("Chat");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         init();
 
@@ -159,5 +163,15 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
         rvMessage.setLayoutManager(new LinearLayoutManager(GroupChatActivity.this));
         messageAdapter = new MessageAdapter(GroupChatActivity.this, messages, databaseReference);
         rvMessage.setAdapter(messageAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
