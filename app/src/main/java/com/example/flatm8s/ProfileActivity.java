@@ -57,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         firebaseStorage = FirebaseStorage.getInstance();
 
-        DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
         StorageReference storageReference = firebaseStorage.getReference();
 

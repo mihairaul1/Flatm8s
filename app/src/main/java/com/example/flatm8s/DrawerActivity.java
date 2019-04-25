@@ -118,7 +118,7 @@ public class DrawerActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_chat) {
-            //code
+            startActivity(new Intent(DrawerActivity.this, GroupChatActivity.class));
         } else if (id == R.id.nav_tasks) {
             startActivity(new Intent(DrawerActivity.this, TasksActivity.class));
         } else if (id == R.id.nav_consumables) {
@@ -142,7 +142,7 @@ public class DrawerActivity extends AppCompatActivity
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         StorageReference storageReference = firebaseStorage.getReference();
-        DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);

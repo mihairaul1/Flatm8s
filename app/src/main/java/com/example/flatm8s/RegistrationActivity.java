@@ -233,7 +233,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void sendUserInfo(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
+        DatabaseReference myRef = firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
         // Image will be stored in: UID/ Images/ profile_pic.png
         StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Images").child("Profile Picture");
         UploadTask uploadTask = imageReference.putFile(imagePath);
