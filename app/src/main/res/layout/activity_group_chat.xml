@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GroupChatActivity">
+    tools:context=".GroupChatActivity"
+    android:background="#ffffff">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvChat"
@@ -21,7 +22,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginBottom="45dp">
+        android:layout_marginBottom="60dp"
+        android:windowSoftInputMode="adjustResize">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -31,22 +33,24 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:background="@color/colorPrimary"
+        android:background="#FFFFFF"
         android:paddingTop="5dp">
 
         <LinearLayout
+            android:id="@+id/etEnterMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/etChatMessage"
-                android:background="@drawable/edittext_style"
+                android:background="@drawable/enter_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="#000"
-                android:hint="Enter message"/>
+                android:hint="Enter message"
+                android:layout_marginBottom="5dp"/>
             
             <ImageButton
                 android:id="@+id/btnSendMessage"

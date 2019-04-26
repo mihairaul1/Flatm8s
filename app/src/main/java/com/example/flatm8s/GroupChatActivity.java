@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.flatm8s.Adapters.MessageAdapter;
@@ -159,10 +160,30 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
         messages = new ArrayList<>();
     }
 
-    private void displayMessages(List<Message> messages) {
-        rvMessage.setLayoutManager(new LinearLayoutManager(GroupChatActivity.this));
+    private void displayMessages(final List<Message> messages) {
+        LinearLayoutManager manager = new LinearLayoutManager(GroupChatActivity.this);
+        manager.setStackFromEnd(true);
+        rvMessage.setLayoutManager(manager);
         messageAdapter = new MessageAdapter(GroupChatActivity.this, messages, databaseReference);
         rvMessage.setAdapter(messageAdapter);
+
+        rvMessage.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View view, int left, int top, int right,
+                                       int bottom, int oldLeft, int oldTop,
+                                       int oldRight, int oldBottom) {
+
+                if(bottom<oldBottom){
+                    rvMessage.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            rvMessage.smoothScrollToPosition(rvMessage.getAdapter().getItemCount()-1);
+                        }
+                    }, 100);
+                }
+
+            }
+        });
     }
 
     @Override
