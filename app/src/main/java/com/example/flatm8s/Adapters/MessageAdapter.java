@@ -43,9 +43,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
     @Override
     public void onBindViewHolder(@NonNull MessageAdaptorViewHolder messageAdaptorViewHolder, int position) {
         Message message = messages.get(position);
+        int whiteColor = Color.WHITE;
 
         if(message.getName().equals(AllMethods.name)){
             messageAdaptorViewHolder.title.setText("You: "+message.getMessage());
+            messageAdaptorViewHolder.title.setTextColor(whiteColor);
             messageAdaptorViewHolder.title.setGravity(Gravity.START);
             messageAdaptorViewHolder.linearLayout.setBackgroundColor(Color.parseColor("#66CDAA"));
         }else{
