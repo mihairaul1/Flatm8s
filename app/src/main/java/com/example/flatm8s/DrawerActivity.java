@@ -32,6 +32,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+/**
+ * This class is implementing the Navigation Drawer which can be seen when
+ * on the home page.
+ * The navigation drawer is used in order for the user to be able to navigate
+ * easily between the different activities implemented.
+ */
+
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

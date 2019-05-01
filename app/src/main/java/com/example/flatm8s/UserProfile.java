@@ -27,7 +27,7 @@ public class UserProfile {
         this.userDOB = userDOB;
         this.userUniversity = userUniversity;
         this.userCourse = userCourse;
-        this. userYear = userYear;
+        this.userYear = userYear;
     }
 
     /*Getters and setters used in order to retrieve and respectively

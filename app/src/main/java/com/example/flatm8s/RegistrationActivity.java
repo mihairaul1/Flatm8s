@@ -204,7 +204,7 @@ public class RegistrationActivity extends AppCompatActivity {
         age = userAge.getText().toString();
         university = userUniversity.getText().toString();
         course = userCourse.getText().toString();
-        year = userCourse.getText().toString();
+        year = userYear.getText().toString();
 
         // Checking if all the fields have been filled in
         if (name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty() || university.isEmpty() ||
