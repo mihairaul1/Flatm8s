@@ -1,4 +1,8 @@
 # Flatm8s
 Dissertation project
 
-Added features: Login with firebase, Email verification, Reset Password.
+This project has been completed by student: Mihai Raul Tuchilus.
+
+Title: Flat Tasks Management Application.
+
+Supervisor: Dr. Mauricio Alvarez
