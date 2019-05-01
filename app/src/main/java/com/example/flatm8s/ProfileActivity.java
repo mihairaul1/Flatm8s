@@ -23,6 +23,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+/**
+ * This Activity displays all the info that the user has
+ * registered with, enabling him/her to also update the data
+ * or the account's password.
+ */
+
 public class ProfileActivity extends AppCompatActivity {
 
     private ImageView profilePic;

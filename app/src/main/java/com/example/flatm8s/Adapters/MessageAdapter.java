@@ -19,6 +19,12 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
 
+/**
+ * Adapter used for the GroupChat Activity.
+ * Gets the message from the user and once sent, it helps
+ * displaying the message accordingly.
+ */
+
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageAdaptorViewHolder> {
 
     Context context;

@@ -10,6 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * This Activity has been implemented in order to enable the
+ * user to send Maintenance Enquiries regarding faults in
+ * the flat.
+ * All the text inputted in the fields of this activity is
+ * automatically transferred to an email client. The user only
+ * needs to press the send button.
+ */
+
 public class MaintenanceEnquiry extends AppCompatActivity {
     private EditText mailTo, mailSubject, mailMessage;
 

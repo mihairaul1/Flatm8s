@@ -27,6 +27,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * In this Activity, the group chat between all the flat occupants
+ * has been implemented.
+ * The user is able to send messages and delete his/ her messages.
+ * The messages that are sent by the user appear under a brighter
+ * color than the rest of the messages.
+ */
+
 public class GroupChatActivity extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseAuth firebaseAuth;

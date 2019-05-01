@@ -1,5 +1,11 @@
 package com.example.flatm8s;
 
+/**
+ * This class represents the model for the Message used
+ * in GroupChatActivity.
+ * Data: message, name, key.
+ */
+
 public class Message {
     String message;
     String name;

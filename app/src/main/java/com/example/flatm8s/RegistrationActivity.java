@@ -36,6 +36,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * This Activity enables a new user to be able to Register
+ * and create an account in order to gain access into the application.
+ * In this Activity the verification email is sent and all the data
+ * is being uploaded onto the database.
+ */
+
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText userName, userEmail, userPassword,userDOB, userAge, userUniversity, userCourse, userYear;

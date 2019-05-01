@@ -18,6 +18,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * This Activity contains the Log In screen in which the user
+ * is asked to enter his login details.
+ * From this screen the user is also able to recover their password
+ * or acces the registration form.
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     // Declaring all the variables that are needed

@@ -35,6 +35,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Class which lets the user update his profile data, by modifying
+ * the original fields provided in the Registration.
+ * The data is changed into the database and storage as well.
+ */
+
 public class UpdateProfile extends AppCompatActivity {
 
     private EditText updateUserName, updateUserEmail, updateUserDOB, updateUserAge,

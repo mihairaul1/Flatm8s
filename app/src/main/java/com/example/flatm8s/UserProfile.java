@@ -1,5 +1,11 @@
 package com.example.flatm8s;
 
+/**
+ * This class represents the model for the user.
+ * Data: userName, userEmail, userDOB, userAge, userUniversity,
+ *       userCourse, userYear.
+ */
+
 public class UserProfile {
     public String userName;
     public String userEmail;

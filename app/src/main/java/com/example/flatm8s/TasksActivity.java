@@ -21,6 +21,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+/**
+ * Class used in order to create the Tasks Activity which creates
+ * new task fields that are added to the list-view and pushed onto
+ * the database.
+ * The user can also remove the Tasks added, action which also
+ * removes them from the database.
+ */
+
 public class TasksActivity extends AppCompatActivity {
 
     ArrayList<String> itemsList = new ArrayList<>();

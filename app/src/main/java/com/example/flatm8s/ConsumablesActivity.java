@@ -21,6 +21,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+/**
+ * Class used in order to create the Consumables Activity which creates
+ * new consumables fields that are added to the list-view and pushed onto
+ * the database.
+ * The user can also remove the Consumables added, action which also
+ * removes them from the database.
+ */
+
 public class ConsumablesActivity extends AppCompatActivity {
 
     ArrayList<String> itemsList = new ArrayList<>();
@@ -126,6 +134,7 @@ public class ConsumablesActivity extends AppCompatActivity {
         };
         databaseReference.addChildEventListener(childListener);
     }
+
 
     public void pushConsumables(View view){
         String item = newConsumables.getText().toString();

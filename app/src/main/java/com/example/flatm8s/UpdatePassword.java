@@ -14,6 +14,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * This Activity lets the user update his password by pressing the
+ * Change Password button within the Profile Activity.
+ * The new password gets uploaded into Firebase Authentication
+ * therefore the user is able to use it straight after pressing
+ * the update button.
+ */
+
 public class UpdatePassword extends AppCompatActivity {
 
     private EditText newPassword;
