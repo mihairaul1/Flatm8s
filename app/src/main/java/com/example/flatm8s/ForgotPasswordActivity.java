@@ -20,7 +20,7 @@ import java.net.PasswordAuthentication;
 /**
  * This activity sends a reset password link to the email entered
  * by the user in order for him/ her to be able to reset the account
- * password, which also gets updated in firebaseAuthenticaiton.
+ * password, which also gets updated in firebase Authentication.
  */
 
 public class ForgotPasswordActivity extends AppCompatActivity {

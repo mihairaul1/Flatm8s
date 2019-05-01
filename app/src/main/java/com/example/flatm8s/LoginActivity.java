@@ -22,7 +22,9 @@ import com.google.firebase.auth.FirebaseUser;
  * This Activity contains the Log In screen in which the user
  * is asked to enter his login details.
  * From this screen the user is also able to recover their password
- * or acces the registration form.
+ * or access the registration form.
+ * Another feature that has been added is disabling the login
+ * button after 5 failed attempts to log in.
  */
 
 public class LoginActivity extends AppCompatActivity {

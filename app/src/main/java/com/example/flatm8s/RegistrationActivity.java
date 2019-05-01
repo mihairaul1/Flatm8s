@@ -41,6 +41,8 @@ import java.util.Date;
  * and create an account in order to gain access into the application.
  * In this Activity the verification email is sent and all the data
  * is being uploaded onto the database.
+ * Error messages are displayed accordingly in case the user does
+ * not provide all the required data.
  */
 
 public class RegistrationActivity extends AppCompatActivity {
